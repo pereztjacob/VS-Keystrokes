@@ -1,3 +1,9 @@
+/* ************************************INITIAL RENDER*******************************************
+    **************************************************
+    ***********************
+    *************
+*/
+
 function ShortCut(keys, description, gifURL){
     this.keys = keys;
     this.description = description;
@@ -24,4 +30,22 @@ ShortCut.prototype.renderCards = function(keys, description){
 
 for(let i = 0; i < 3; i++){
     ShortCut.prototype.renderCards(objArray[i].keys[0] + ' + ' + objArray[i].keys[1], objArray[i].description);
+}
+
+var map = []; // You could also use an array
+onkeydown = function(e){
+    const game = document.getElementById('game');
+    const keyElement = game.querySelectorAll('h2');
+    const descElement = game.querySelectorAll('h4');
+    //elements[0].remove();
+
+    e = e || event; // to deal with IE
+    map[e.keyCode] = e.type == 'keydown';
+    /* insert conditional here */
+
+    if(map[17] && map[16] && map[65]){ // CTRL+SHIFT+A
+        keyElement[1].remove();
+        descElement[1].remove();
+    }
+    return;
 }
