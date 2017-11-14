@@ -52,6 +52,7 @@ onkeydown = onkeyup = function(e){
         keyElement[0].remove();
         descElement[0].remove();
         globalI++;
+        ShortCut.prototype.renderCards(objArray[globalI + 3].keys[0] + ' + ' + objArray[globalI + 3].keys[1], objArray[globalI].description);
     }
     return;
 };
