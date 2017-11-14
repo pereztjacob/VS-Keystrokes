@@ -1,11 +1,7 @@
-/* ************************************INITIAL RENDER*******************************************
-    **************************************************
-    ***********************
-    *************
-*/
-
+// global variable to keep track of number of rendered items
 let globalI = 0;
 
+// constructor for keyboard shortcuts
 function ShortCut(keys, description, gifURL, keyCode){
     this.keys = keys;
     this.description = description;
@@ -13,6 +9,7 @@ function ShortCut(keys, description, gifURL, keyCode){
     this.keyCode = keyCode;
 }
 
+// object instances
 const cutLine = new ShortCut(['ctrl', 'x'], 'Removes selected line.', 'img', [17, 88]);
 const search = new ShortCut(['ctrl', 'f'], 'Will find text on the page that matches the text you type in the search box.', 'img/ctrlF.gif', [17, 70]);
 const lineMove = new ShortCut(['alt', 'down'], 'Moves current line down. If there is a line directly below current line they swap places. You can use the up arrow and it wil do the opposite.', 'img/altDown.gif', [18, 40]);
@@ -27,6 +24,7 @@ const undo = new ShortCut(['ctrl', 'z'], 'Will undo the last change you have mad
 
 objArray = [cutLine, search, lineMove, findMatch, indent, shortcuts, matchingOpenClose, commentLine, autoComplete, openConsole, undo];
 
+// function to render key and description elements
 ShortCut.prototype.renderCards = function(keys, description){
     const game = document.getElementById('game');
     const ele = document.createElement('h2');
@@ -36,20 +34,19 @@ ShortCut.prototype.renderCards = function(keys, description){
     eleTwo.textContent = description;
     game.appendChild(eleTwo);
 }
-
 for(let i = 0; i < 3; i++){
     ShortCut.prototype.renderCards(objArray[i].keys[0] + ' + ' + objArray[i].keys[1], objArray[i].description);
 }
 
+// keyboard event section
 var map = [];
 onkeydown = onkeyup = function(e){
     const game = document.getElementById('game');
     const keyElement = game.querySelectorAll('h2');
     const descElement = game.querySelectorAll('h4');
 
-    e = e || event; // to deal with IE
+    e = e || event;
     map[e.keyCode] = e.type == 'keydown';
-    /* insert conditional here */
 
     if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]]){
         keyElement[0].remove();
