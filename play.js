@@ -1,4 +1,5 @@
 'use strict';
+let globalI = 0;
 // global variable to keep track of score
 //let score = 0;
 
@@ -42,8 +43,46 @@ ShortCut.prototype.renderGifs = function(description, gifURL) {
 // Functions to show Gifs and descriptions on Quiz Play page
 function render(){
     console.log(objArray[0]);
-    for (let i = 0; i < objArray.length; i++) {
-        ShortCut.prototype.renderGifs(objArray[i].description, objArray[i].gifURL);
-    }
+    ShortCut.prototype.renderGifs(objArray[0].description, objArray[0].gifURL);
 }
 render();
+
+const map = [];
+onkeydown = onkeyup = function(e){ //eslint-disable-line
+    const ele = document.getElementById('quiz');
+    //const desc = document.getElementById('p');
+
+    e = e || event;
+    map[e.keyCode] = e.type == 'keydown';
+
+    console.log(ele);
+
+    if(objArray[globalI].keys.length === 2){
+        if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]]){
+            ele.remove();
+            // desc.remove();
+            globalI++;
+            render();
+        }
+
+    }
+    if(objArray[globalI].keys.length === 3){
+        if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]] && map[objArray[globalI].keyCode[2]]){
+            ele.remove();
+            // desc.remove();
+            globalI++;
+            render();
+            return;
+        }
+    }
+    if(objArray[globalI].keys.length === 1){
+        if(map[objArray[globalI].keyCode[0]]){
+            ele.remove();
+            // desc.remove();
+            globalI++;
+            render();
+            return;
+        }
+    }
+};
+
