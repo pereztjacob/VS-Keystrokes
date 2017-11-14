@@ -54,4 +54,4 @@ onkeydown = onkeyup = function(e){
         globalI++;
     }
     return;
-}
+};
