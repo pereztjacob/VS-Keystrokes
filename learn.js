@@ -20,8 +20,32 @@ const commentLine = new ShortCut(['ctrl', '/'], 'Will comment out the current li
 const selectTerm = new ShortCut(['ctrl', 'f2'], 'Highlights and selects all instances of current word', 'img/ctrlF2.gif', [17, 113]);
 const openConsole = new ShortCut(['ctrl', '`'], 'Will open the console. Here you can access terminal, debug console, problems, and output.', 'img/ctrlAccent.gif', [17, 192]);
 const undo = new ShortCut(['ctrl', 'z'], 'Will undo the last change you have made. You can keep hitting it and it will continue to undo changes. Control Y will bring the change back.', 'img/ctrlZ.gif', [17, 90]);
+const test = new ShortCut(['ctrl', 'shift'], 'test', '#', [16, 17]);
 
-const objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, openConsole, undo];
+const objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, openConsole, undo, test];
+
+const form = document.getElementById('new-store');
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const keys = document.getElementById('keys').value;
+    console.log(keys.charCodeAt(0));
+    const description = document.getElementById('description').value;
+    const keyCodeValueOne = keys.toUpperCase().charCodeAt(0);
+    const keyCodeValueTwo = keys.toUpperCase().charCodeAt(1);
+    const keyCodeValueThree = keys.toUpperCase().charCodeAt(2);
+    const keyCodeValueFour = keys.toUpperCase().charCodeAt(3);
+    const keyCode = [];
+    keyCode.push(keyCodeValueOne);
+    keyCode.push(keyCodeValueTwo);
+    keyCode.push(keyCodeValueThree);
+    keyCode.push(keyCodeValueFour);
+
+    const newShortCut = new ShortCut(keys, description, '#', keyCode);
+
+    console.log(newShortCut);
+    objArray.push(newShortCut);
+});
 
 // function to render key and description elements
 ShortCut.prototype.renderCards = function(keys, description){
@@ -93,8 +117,6 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
         }
     }
 };
-
-
 
 // adds click handler to restart button
 const restart = document.getElementById('restart');
