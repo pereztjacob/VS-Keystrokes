@@ -17,11 +17,11 @@ const findError = new ShortCut(['f8'], 'Will jump to the next error in your code
 const indent = new ShortCut(['ctrl', ']'], 'Indents selected text one tab to the left. [ will remove and indent.', 'img/ctrlBracket.gif', [17, 221]);
 const matchingOpenClose = new ShortCut(['ctrl', 'shift', '\\'], 'Will find the matching bracket, parentheses, or curly brace.', 'img/ctrlShiftBSlash.gif', [17, 16, 220]);
 const commentLine = new ShortCut(['ctrl', '/'], 'Will comment out the current line of code, or currently selected lines.', 'img/ctrlSlash.gif', [17, 191]);
-const autoComplete = new ShortCut(['ctrl', 'spacebar'], 'Will open up autocomplete on the word you are currently typing', 'img/ctrlSpace.gif', [17, 32]);
+const selectTerm = new ShortCut(['ctrl', 'f2'], 'Highlights and selects all instances of current word', 'img/ctrlF2.gif', [17, 113]);
 const openConsole = new ShortCut(['ctrl', '`'], 'Will open the console. Here you can access terminal, debug console, problems, and output.', 'img/ctrlAccent.gif', [17, 192]);
 const undo = new ShortCut(['ctrl', 'z'], 'Will undo the last change you have made. You can keep hitting it and it will continue to undo changes. Control Y will bring the change back.', 'img/ctrlZ.gif', [17, 90]);
 
-const objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, autoComplete, openConsole, undo];
+const objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, openConsole, undo];
 
 // function to render key and description elements
 ShortCut.prototype.renderCards = function(keys, description){
@@ -103,29 +103,12 @@ restart.addEventListener('click', clickHandler);
 function clickHandler(e){ //eslint-disable-line
     // creates arrays of key and description elements on the page
     const game = document.getElementById('game');
-    const keyElement = game.querySelectorAll('h2');
-    const descElement = game.querySelectorAll('h4');
 
-    // removes all three elements on the page if there are at least three left
-    if(globalI <= 7){
-        for(let i = 0; i < 3; i++){
-            keyElement[i].remove();
-            descElement[i].remove();
-        }
-    // removes only two elements if there are only two left
-    }else if(globalI === 8){
-        for(let i = 0; i < 2; i++){
-            keyElement[i].remove();
-            descElement[i].remove();
-        }
-    // removes final element if only one is left
-    }else if(globalI === 9){
-        for(let i = 0; i < 1; i++){
-            keyElement[i].remove();
-            descElement[i].remove();
-        }
+    // removes all elements rendered to 'game'
+    while(game.hasChildNodes()){
+        game.removeChild(game.lastChild);
     }
-    // resets globalI and renders the first three ShortCuts again
+
     globalI = 0;
     for(let i = 0; i < 3; i++){
         ShortCut.prototype.renderCards(objArray[i].keys[0] + ' + ' + objArray[i].keys[1], objArray[i].description);
