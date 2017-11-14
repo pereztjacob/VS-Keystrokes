@@ -24,6 +24,29 @@ const test = new ShortCut(['ctrl', 'shift'], 'test', '#', [16, 17]);
 
 const objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, openConsole, undo, test];
 
+const form = document.getElementById('new-store');
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const keys = document.getElementById('keys').value;
+    console.log(keys.charCodeAt(0));
+    const description = document.getElementById('description').value;
+    const keyCodeValueOne = keys.toUpperCase().charCodeAt(0);
+    const keyCodeValueTwo = keys.toUpperCase().charCodeAt(1);
+    const keyCodeValueThree = keys.toUpperCase().charCodeAt(2);
+    const keyCodeValueFour = keys.toUpperCase().charCodeAt(3);
+    const keyCode = [];
+    keyCode.push(keyCodeValueOne);
+    keyCode.push(keyCodeValueTwo);
+    keyCode.push(keyCodeValueThree);
+    keyCode.push(keyCodeValueFour);
+
+    const newShortCut = new ShortCut(keys, description, '#', keyCode);
+
+    console.log(newShortCut);
+    objArray.push(newShortCut);
+});
+
 // function to render key and description elements
 ShortCut.prototype.renderCards = function(keys, description){
     const game = document.getElementById('game');
