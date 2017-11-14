@@ -1,9 +1,10 @@
 'use strict';
-// global variable to keep track of score
-//let score = 0;
+
+// global variable to keep track of number of rendered items
+let globalI = 0;
 
 // object instances
-const cutLine = new ShortCut(['ctrl', 'x'], 'Removes selected line.', 'img/ctrlX.gif', [17, 88]);
+const cutLine = new ShortCut(['ctrl', 'x'], 'Removes selected line.', 'img', [17, 88]);
 const toggleWrap = new ShortCut(['alt', 'z'], 'Will toggle word wrap on and off.', 'img/altZ.gif', [18, 90]);
 const lineMove = new ShortCut(['alt', 'down'], 'Moves current line down. If there is a line directly below current line they swap places. You can use the up arrow and it wil do the opposite.', 'img/altDown.gif', [18, 40]);
 const findError = new ShortCut(['f8'], 'Will jump to the next error in your code', 'img/f8.gif', [119]);
@@ -16,8 +17,6 @@ const undo = new ShortCut(['ctrl', 'z'], 'Will undo the last change you have mad
 
 const objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, openConsole, undo];
 
-console.log(objArray[0]);
-
 // constructor for keyboard shortcuts
 function ShortCut(keys, description, gifURL, keyCode){
     this.keys = keys;
@@ -27,23 +26,12 @@ function ShortCut(keys, description, gifURL, keyCode){
 }
 
 // function to render key and description elements
-ShortCut.prototype.renderGifs = function(description, gifURL) {
-    const quiz = document.getElementById('quiz');
-    const ele = document.createElement('img');
-    const desc = document.createElement('p');
-
-    desc.textContent = description;
-    ele.src = gifURL;
-
-    quiz.appendChild(ele);
-    quiz.appendChild(desc);
+ShortCut.prototype.renderCards = function(keys, description){
+    const game = document.getElementById('game');
+    const ele = document.createElement('h2');
+    ele.textContent = keys;
+    game.appendChild(ele);
+    const eleTwo = document.createElement('h4');
+    eleTwo.textContent = description;
+    game.appendChild(eleTwo);
 };
-
-// Functions to show Gifs and descriptions on Quiz Play page
-function render(){
-    console.log(objArray[0]);
-    for (let i = 0; i < objArray.length; i++) {
-        ShortCut.prototype.renderGifs(objArray[i].description, objArray[i].gifURL);
-    }
-}
-render();

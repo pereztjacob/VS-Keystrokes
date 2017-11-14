@@ -1,3 +1,5 @@
+'use strict';
+
 // global variable to keep track of number of rendered items
 let globalI = 0;
 
