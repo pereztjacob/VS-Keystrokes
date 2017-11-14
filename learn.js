@@ -55,4 +55,4 @@ onkeydown = onkeyup = function(e){
         ShortCut.prototype.renderCards(objArray[globalI + 3].keys[0] + ' + ' + objArray[globalI + 3].keys[1], objArray[globalI].description);
     }
     return;
-}
+};
