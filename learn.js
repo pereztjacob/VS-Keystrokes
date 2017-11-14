@@ -51,9 +51,42 @@ onkeydown = onkeyup = function(e){
         keyElement[0].remove();
         descElement[0].remove();
         globalI++;
-        ShortCut.prototype.renderCards(objArray[globalI + 3].keys[0] + ' + ' + objArray[globalI + 3].keys[1], objArray[globalI].description);
+        ShortCut.prototype.renderCards(objArray[globalI + 2].keys[0] + ' + ' + objArray[globalI + 2].keys[1], objArray[globalI].description);
     }
-    return;
-};
+}
 
-// At end of quiz inform them of ctrl + d, ctrl + f, and ctrl + k + s
+// adds click handler to restart button
+const restart = document.getElementById('restart');
+restart.addEventListener('click', clickHandler);
+
+function clickHandler(e){
+    // creates arrays of key and description elements on the page
+    const game = document.getElementById('game');
+    const keyElement = game.querySelectorAll('h2');
+    const descElement = game.querySelectorAll('h4');
+
+    // removes all three elements on the page if there are at least three left
+    if(globalI <= 8){
+        for(let i = 0; i < 3; i++){
+            keyElement[i].remove();
+            descElement[i].remove();
+        }
+    // removes only two elements if there are only two left
+    }else if(globalI === 9){
+        for(let i = 0; i < 2; i++){
+            keyElement[i].remove();
+            descElement[i].remove();
+        }
+    // removes final element if only one is left
+    }else if(globalI === 10){
+        for(let i = 0; i < 1; i++){
+            keyElement[i].remove();
+            descElement[i].remove();
+        }
+    }
+    // resets globalI and renders the first three ShortCuts again
+    globalI = 0;
+    for(let i = 0; i < 3; i++){
+        ShortCut.prototype.renderCards(objArray[i].keys[0] + ' + ' + objArray[i].keys[1], objArray[i].description);
+    }
+}
