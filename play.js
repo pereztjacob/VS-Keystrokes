@@ -42,8 +42,8 @@ ShortCut.prototype.renderGifs = function(description, gifURL) {
 
 // Functions to show Gifs and descriptions on Quiz Play page
 function render(){
-    console.log(objArray[0]);
-    ShortCut.prototype.renderGifs(objArray[0].description, objArray[0].gifURL);
+    console.log(objArray[globalI]);
+    ShortCut.prototype.renderGifs(objArray[globalI].description, objArray[globalI].gifURL);
 }
 render();
 
@@ -59,8 +59,9 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
 
     if(objArray[globalI].keys.length === 2){
         if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]]){
-            ele.remove();
-            // desc.remove();
+            while(ele.hasChildNodes()){
+                ele.removeChild(ele.lastChild);
+            }
             globalI++;
             render();
         }
@@ -68,20 +69,20 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
     }
     if(objArray[globalI].keys.length === 3){
         if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]] && map[objArray[globalI].keyCode[2]]){
-            ele.remove();
-            // desc.remove();
+            while(ele.hasChildNodes()){
+                ele.removeChild(ele.lastChild);
+            }
             globalI++;
             render();
-            return;
         }
     }
     if(objArray[globalI].keys.length === 1){
         if(map[objArray[globalI].keyCode[0]]){
-            ele.remove();
-            // desc.remove();
+            while(ele.hasChildNodes()){
+                ele.removeChild(ele.lastChild);
+            }
             globalI++;
             render();
-            return;
         }
     }
 };
