@@ -51,13 +51,15 @@ form.addEventListener('submit', function(e){
 
 // function to render key and description elements
 ShortCut.prototype.renderCards = function(keys, description){
-    const game = document.getElementById('game');
+    const game = document.getElementById('learnGame');
+    const sect = document.createElement('section');
+    game.appendChild(sect);
     const ele = document.createElement('h2');
     ele.textContent = keys;
-    game.appendChild(ele);
+    sect.appendChild(ele);
     const eleTwo = document.createElement('h4');
     eleTwo.textContent = description;
-    game.appendChild(eleTwo);
+    sect.appendChild(eleTwo);
 };
 
 function renderByLength(){
@@ -84,7 +86,7 @@ for(let i = 0; i < 3; i++){
 // keyboard event section
 const map = [];
 onkeydown = onkeyup = function(e){ //eslint-disable-line
-    const game = document.getElementById('game');
+    const game = document.getElementById('learnGame');
     const keyElement = game.querySelectorAll('h2');
     const descElement = game.querySelectorAll('h4');
 
@@ -130,7 +132,7 @@ restart.addEventListener('click', clickHandler);
 
 function clickHandler(e){ //eslint-disable-line
     // creates arrays of key and description elements on the page
-    const game = document.getElementById('game');
+    const game = document.getElementById('learnGame');
 
     // removes all elements rendered to 'game'
     while(game.hasChildNodes()){
