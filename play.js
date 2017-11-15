@@ -2,6 +2,18 @@
 let globalI = 0;
 // global variable to keep track of score
 //let score = 0;
+let a = 15;
+const i = setInterval( timer, 1000 );
+
+function timer() {
+    console.log( a );
+    if ( a < 1 ) {
+        console.log( 'Reaching Stop' );
+        clearInterval( i );
+        return;
+    }
+    a -= 1;
+}
 
 // object instances
 const cutLine = new ShortCut(['ctrl', 'x'], 'Removes selected line.', 'img/ctrlX.gif', [17, 88]);
