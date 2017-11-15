@@ -24,6 +24,8 @@ function timer() {
         if(globalI < 10){
             render();
             checkStorage();
+        }else{
+            console.table(objArray);
         }
 
         // reset timer
@@ -53,6 +55,7 @@ function ShortCut(keys, description, gifURL, keyCode){
     this.description = description;
     this.gifURL = gifURL;
     this.keyCode = keyCode;
+    this.score = score || 0;
 }
 
 // function to render key and description elements
@@ -100,14 +103,15 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             a = 3;
             // track score
             score++;
+            objArray[globalI].score++;
             // render new elements
             if(globalI < 10){
                 render();
                 checkStorage();
             }
         }
-
     }
+
     if(objArray[globalI].keys.length === 3){
         if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]] && map[objArray[globalI].keyCode[2]]){
             while(ele.hasChildNodes()){
@@ -142,4 +146,70 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
 function checkStorage(){
     localStorage.setItem('scores', JSON.stringify(score));
     console.log(localStorage.getItem('scores', JSON.parse(score)));
+}
+
+function drawChart () {
+    const chartCanvas = document.getElementById('myChart');
+    const context = chartCanvas.getContext('2d');
+    Chart.defaults.global.defaultFontColor = '#ffffff'; // eslint-disable-line
+    const itemNames = [];
+    const clickedData = [];
+    const shownData = [];
+    console.log('Shown data: ' + shownData);
+    console.log('Clicked data: ' + clickedData);
+    for ( let i = 0; i < itemList.length; i++ ){
+        itemNames.push(itemList[i].name);
+        clickedData.push(itemList[i].clicked);
+        shownData.push(itemList[i].shown);
+    }
+
+    const chart = new Chart ( // eslint-disable-line
+        context,
+        {
+            type: 'bar',
+            data: {
+                labels: itemNames,
+                datasets: [
+                    {
+                        label: 'Number of Clicks',
+                        data: clickedData,
+                        backgroundColor: 'red',
+                        defaultFontFamily: 'Arial',
+                    },
+                    // {
+                    //     label: 'Shown Data',
+                    //     data: shownData,
+                    //     backgroundColor: 'blue',
+                    //     defaultFontFamily: 'Arial',
+                    // }
+                ]
+            },
+            options: {
+                borderColor: [
+                    'rgba(0,0,0,1)'
+                ],
+                borderWidth: 10,
+                title: {
+                    display: true,
+                    text: 'Item Data',
+                    fontSize: 25,
+                    defaultFontFamily: 'Arial',
+                    fontStyle: 'bold',
+                    fontColor: 'white',
+                    padding: 10,
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'linear',
+                },
+            }
+        }
+    );
 }
