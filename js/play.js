@@ -9,7 +9,7 @@ let score = 0;
 let scoresArray = [];
 
 // timer function in seconds(a)
-let a = 20;
+let a = 3;
 const i = setInterval(timer, 1000); //eslint-disable-line
 function timer() {
     if(a < 1){
@@ -24,9 +24,11 @@ function timer() {
         globalI++;
         if(globalI < 10){
             render();
-        }
+        }else if(globalI === 10){
+            drawChart();
+        }else{}
         // reset timer
-        a = 20;
+        a = 3;
     }
     a -= 1;
 }
@@ -40,16 +42,16 @@ if(localStorage.objArray){
     }
 }else{
     // object instances
-    const cutLine = new ShortCut(['ctrl', 'x'], 'Removes selected line.', 'img/ctrlX.gif', [17, 88]);
-    const toggleWrap = new ShortCut(['alt', 'z'], 'Will toggle word wrap on and off.', 'img/altZ.gif', [18, 90]);
-    const lineMove = new ShortCut(['alt', 'down'], 'Moves current line down. If there is a line directly below current line they swap places. You can use the up arrow and it wil do the opposite.', 'img/altDown.gif', [18, 40]);
-    const findError = new ShortCut(['f8'], 'Will jump to the next error in your code', 'img/f8.gif',[119]);
-    const indent = new ShortCut(['ctrl', ']'], 'Indents selected text one tab to the left. [ will remove and indent.', 'img/ctrlBracket.gif', [17, 221]);
-    const matchingOpenClose = new ShortCut(['ctrl', 'shift', '\\'], 'Will find the matching bracket, parentheses, or curly brace.', 'img/ctrlShiftBSlash.gif', [17, 16, 220]);
-    const commentLine = new ShortCut(['ctrl', '/'], 'Will comment out the current line of code, or currently selected lines.', 'img/ctrlSlash.gif', [17, 191]);
-    const selectTerm = new ShortCut(['ctrl', 'f2'], 'Highlights and selects all instances of current word', 'img/ctrlF2.gif', [17, 113]);
-    const openConsole = new ShortCut(['ctrl', '`'], 'Will open the console. Here you can access terminal, debug console, problems, and output.', 'img/ctrlAccent.gif', [17, 192]);
-    const undo = new ShortCut(['ctrl', 'z'], 'Will undo the last change you have made. You can keep hitting it and it will continue to undo changes. Control Y will bring the change back.', 'img/ctrlZ.gif', [17, 90]);
+    const cutLine = new ShortCut(['CTRL ' + '+ ' + 'X'], 'Removes selected line.', 'img/ctrlX.gif', [17, 88]);
+    const toggleWrap = new ShortCut(['ALT ' + '+ ' + 'Z'], 'Will toggle word wrap on and off.', 'img/altZ.gif', [18, 90]);
+    const lineMove = new ShortCut(['ALT ' + '+ ' + 'DOWN'], 'Moves current line down. If there is a line directly below current line they swap places. You can use the up arrow and it wil do the opposite.', 'img/altDown.gif', [18, 40]);
+    const findError = new ShortCut(['F8'], 'Will jump to the next error in your code', 'img/f8.gif',[119]);
+    const indent = new ShortCut(['CTRL ' + '+ ' + ']'], 'Indents selected text one tab to the left. [ will remove and indent.', 'img/ctrlBracket.gif', [17, 221]);
+    const matchingOpenClose = new ShortCut(['CTRL ' + '+ ' + 'SHIFT ' + '+ ' + '\\'], 'Will find the matching bracket, parentheses, or curly brace.', 'img/ctrlShiftBSlash.gif', [17, 16, 220]);
+    const commentLine = new ShortCut(['CTRL ' + '+ ' + '/'], 'Will comment out the current line of code, or currently selected lines.', 'img/ctrlSlash.gif', [17, 191]);
+    const selectTerm = new ShortCut(['CTRL ' + '+ ' + 'F2'], 'Highlights and selects all instances of current word', 'img/ctrlF2.gif', [17, 113]);
+    const openConsole = new ShortCut(['CTRL ' + '+ ' + '`'], 'Will open the console. Here you can access terminal, debug console, problems, and output.', 'img/ctrlAccent.gif', [17, 192]);
+    const undo = new ShortCut(['CTRL ' + '+ ' + 'Z'], 'Will undo the last change you have made. You can keep hitting it and it will continue to undo changes. Control Y will bring the change back.', 'img/ctrlZ.gif', [17, 90]);
 
     objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, openConsole, undo];
 }
@@ -104,14 +106,16 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             // track what question you're on
             globalI++;
             // resets timer
-            a = 20;
+            a = 3;
             // track score
             score++;
             objArray[globalI].score++;
             // render new elements
             if(globalI < 10){
                 render();
-            }
+            }else if(globalI === 10){
+                drawChart();
+            }else{}
         }
     }
 
@@ -121,11 +125,13 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
                 ele.removeChild(ele.lastChild);
             }
             globalI++;
-            a = 20;
+            a = 3;
             score++;
             if(globalI < 10){
                 render();
-            }
+            }else if(globalI === 10){
+                drawChart();
+            }else{}
         }
     }
     if(objArray[globalI].keys.length === 1){
@@ -134,11 +140,13 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
                 ele.removeChild(ele.lastChild);
             }
             globalI++;
-            a = 20;
+            a = 3;
             score++;
             if(globalI < 10){
                 render();
-            }
+            }else if(globalI === 10){
+                drawChart();
+            }else{}
         }
     }
 };
@@ -147,15 +155,16 @@ function drawChart () {
     const chartCanvas = document.getElementById('myChart');
     const context = chartCanvas.getContext('2d');
     Chart.defaults.global.defaultFontColor = '#ffffff'; // eslint-disable-line
-    const itemNames = [];
-    const clickedData = [];
-    const shownData = [];
-    console.log('Shown data: ' + shownData);
-    console.log('Clicked data: ' + clickedData);
-    for ( let i = 0; i < itemList.length; i++ ){
-        itemNames.push(itemList[i].name);
-        clickedData.push(itemList[i].clicked);
-        shownData.push(itemList[i].shown);
+    const shortcutScore = [];
+    const shortcutNames = [];
+    // const clickedData = [];
+    // const shownData = [];
+    console.log('Shortcut Score: ' + shortcutScore);
+    // console.log('Clicked data: ' + clickedData);
+    for ( let i = 0; i < objArray.length; i++ ){
+        shortcutScore.push(objArray[i].score);
+        shortcutNames.push(objArray[i].keys);
+        // shownData.push(itemList[i].shown);
     }
 
     const chart = new Chart ( // eslint-disable-line
@@ -163,11 +172,11 @@ function drawChart () {
         {
             type: 'bar',
             data: {
-                labels: itemNames,
+                labels: shortcutNames,
                 datasets: [
                     {
-                        label: 'Number of Clicks',
-                        data: clickedData,
+                        label: 'Shortcut Correct Answers',
+                        data: shortcutScore,
                         backgroundColor: 'red',
                         defaultFontFamily: 'Arial',
                     },
@@ -186,7 +195,7 @@ function drawChart () {
                 borderWidth: 10,
                 title: {
                     display: true,
-                    text: 'Item Data',
+                    text: 'Shortcut Data',
                     fontSize: 25,
                     defaultFontFamily: 'Arial',
                     fontStyle: 'bold',
