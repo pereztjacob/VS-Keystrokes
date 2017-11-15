@@ -24,6 +24,8 @@ function timer() {
         if(globalI < 10){
             render();
             checkStorage();
+        }else{
+            console.table(objArray);
         }
 
         // reset timer
@@ -53,6 +55,7 @@ function ShortCut(keys, description, gifURL, keyCode){
     this.description = description;
     this.gifURL = gifURL;
     this.keyCode = keyCode;
+    this.score = score || 0;
 }
 
 // function to render key and description elements
@@ -100,14 +103,15 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             a = 3;
             // track score
             score++;
+            objArray[globalI].score++;
             // render new elements
             if(globalI < 10){
                 render();
                 checkStorage();
             }
         }
-
     }
+
     if(objArray[globalI].keys.length === 3){
         if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]] && map[objArray[globalI].keyCode[2]]){
             while(ele.hasChildNodes()){
