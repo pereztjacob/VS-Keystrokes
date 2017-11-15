@@ -90,15 +90,19 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
     e = e || event;
     map[e.keyCode] = e.type == 'keydown';
 
-    if(objArray[globalI].keys.length === 2){
-        if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]]){
-            keyElement[0].remove();
-            descElement[0].remove();
-            globalI++;
-            renderByLength();
-            return;
+    function doThing(){
+        if(objArray[globalI].keys.length === 2){
+            if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]]){
+                keyElement[0].remove();
+                descElement[0].remove();
+                globalI++;
+                renderByLength();
+                return;
+            }
         }
     }
+    setTimeout(doThing(), 500);
+
     if(objArray[globalI].keys.length === 3){
         if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]] && map[objArray[globalI].keyCode[2]]){
             keyElement[0].remove();
