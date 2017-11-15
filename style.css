@@ -4,7 +4,7 @@ body {
     background-image: url("img/vscode_bg_img.png");
     background-position: center top;
     background-repeat: no-repeat;
-    color: #fff;
+    color: rgb(203, 203, 206);
 }
 
 section#quiz img {
@@ -19,19 +19,28 @@ h1 {
     text-align: center;
     margin-top: 80px;
 }
+
 h2 {
     font-family: 'Source Sans Pro', sans-serif;
     margin-left: 150px;
     color: rgb(203, 133, 73);
 }
+
 h3 {
     font-family: 'Source Sans Pro', sans-serif;
     margin-left: 150px;
     color: rgb(87, 201, 174);
 }
+
+h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+}
 p {
     font-family: 'Share', cursive;
     font-size: 1.2em;
+    letter-spacing: 0.05em;
     line-height: 1.6em;
     margin: auto 150px;
 }
