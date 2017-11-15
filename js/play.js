@@ -9,7 +9,7 @@ let score = 0;
 let scoresArray = [];
 
 // timer function in seconds(a)
-let a = 20;
+let a = 3;
 const i = setInterval(timer, 1000); //eslint-disable-line
 function timer() {
     if(a < 1){
@@ -24,9 +24,11 @@ function timer() {
         globalI++;
         if(globalI < 10){
             render();
-        }
+        }else if(globalI === 10){
+            drawChart();
+        }else{}
         // reset timer
-        a = 20;
+        a = 3;
     }
     a -= 1;
 }
@@ -104,14 +106,16 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             // track what question you're on
             globalI++;
             // resets timer
-            a = 20;
+            a = 3;
             // track score
             score++;
             objArray[globalI].score++;
             // render new elements
             if(globalI < 10){
                 render();
-            }
+            }else if(globalI === 10){
+                drawChart();
+            }else{}
         }
     }
 
@@ -121,11 +125,13 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
                 ele.removeChild(ele.lastChild);
             }
             globalI++;
-            a = 20;
+            a = 3;
             score++;
             if(globalI < 10){
                 render();
-            }
+            }else if(globalI === 10){
+                drawChart();
+            }else{}
         }
     }
     if(objArray[globalI].keys.length === 1){
@@ -134,11 +140,13 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
                 ele.removeChild(ele.lastChild);
             }
             globalI++;
-            a = 20;
+            a = 3;
             score++;
             if(globalI < 10){
                 render();
-            }
+            }else if(globalI === 10){
+                drawChart();
+            }else{}
         }
     }
 };
@@ -147,15 +155,15 @@ function drawChart () {
     const chartCanvas = document.getElementById('myChart');
     const context = chartCanvas.getContext('2d');
     Chart.defaults.global.defaultFontColor = '#ffffff'; // eslint-disable-line
-    const itemNames = [];
-    const clickedData = [];
-    const shownData = [];
-    console.log('Shown data: ' + shownData);
-    console.log('Clicked data: ' + clickedData);
-    for ( let i = 0; i < itemList.length; i++ ){
-        itemNames.push(itemList[i].name);
-        clickedData.push(itemList[i].clicked);
-        shownData.push(itemList[i].shown);
+    const shortcutScore = [];
+    // const clickedData = [];
+    // const shownData = [];
+    console.log('Shortcut Score: ' + shortcutScore);
+    // console.log('Clicked data: ' + clickedData);
+    for ( let i = 0; i < objArray.length; i++ ){
+        shortcutScore.push(objArray[i].score);
+        // clickedData.push(itemList[i].clicked);
+        // shownData.push(itemList[i].shown);
     }
 
     const chart = new Chart ( // eslint-disable-line
@@ -163,11 +171,11 @@ function drawChart () {
         {
             type: 'bar',
             data: {
-                labels: itemNames,
+                labels: shortcutScore,
                 datasets: [
                     {
-                        label: 'Number of Clicks',
-                        data: clickedData,
+                        label: 'Shortcut Correct Answers',
+                        data: shortcutScore,
                         backgroundColor: 'red',
                         defaultFontFamily: 'Arial',
                     },
@@ -186,7 +194,7 @@ function drawChart () {
                 borderWidth: 10,
                 title: {
                     display: true,
-                    text: 'Item Data',
+                    text: 'Shortcut Data',
                     fontSize: 25,
                     defaultFontFamily: 'Arial',
                     fontStyle: 'bold',
