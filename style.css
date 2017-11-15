@@ -38,3 +38,30 @@ p {
 div#form {
     text-align: center;
 }
+ /* written for learn page */
+/* nav{
+    margin: 3%;
+}
+nav > ul{
+    display: inline;
+    float: right;
+}
+li{
+    display: inline;
+}
+#learnGame{
+    display: flex;
+    margin: 5%;
+}
+section > h2{
+    text-align: center;
+    margin-left: 0px !important;
+}
+section > h4{
+    /* display: flex; */
+}
+#learnGame > section{
+    margin: 5%;
+    width: 25%;
+    text-align: center;
+} */
