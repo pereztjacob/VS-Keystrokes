@@ -1,8 +1,5 @@
 'use strict';
 
-// global variable to keep track of number of rendered items
-let globalI = 0;
-
 // object instances
 const cutLine = new ShortCut(['ctrl', 'x'], 'Removes selected line.', 'img', [17, 88]);
 const toggleWrap = new ShortCut(['alt', 'z'], 'Will toggle word wrap on and off.', 'img/altZ.gif', [18, 90]);
