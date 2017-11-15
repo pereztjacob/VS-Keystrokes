@@ -8,7 +8,7 @@
 </head>
 <body>
     <nav>
-        <a href="#">VSquiz</a>
+        <a href="#">VSKeystrokes</a>
         <ul>
             <li><a href="#">Learn</a></li>
             <li><a href="#">Play</a></li>
@@ -21,6 +21,22 @@
         <button type="button" id="restart">Restart</button>
         <button type="button" id="playTheGame"><a href="play.html">Play the game!</a></button>
     </div>
+    <section id="inputter">
+        <form id="new-store">
+            <fieldset>
+                <legend>Add a new store</legend>
+                
+                <label for="keys">keys</label>
+                <input id="keys" type="text" placeholder="keys" required>
+
+                <label for="description">description</label>
+                <input for="description" id="description" type="text" placeholder="description" required>
+
+                <button type="submit">ADD</button>
+            </fieldset>
+        </form>
+    </section>
 </body>
 <script src="learn.js"></script>
+<script src="shortcuts.js"></script>
 </html>
