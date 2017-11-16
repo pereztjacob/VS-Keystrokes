@@ -4,6 +4,7 @@ body {
     background-image: url("../img/vscode_bg_img.png");
     background-position: center top;
     background-repeat: no-repeat;
+    background-size: cover;
     color: rgb(203, 203, 206);
 }
 
