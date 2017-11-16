@@ -20,7 +20,7 @@ Start Button
 Proposed Colors 
 
 VS Dark Grey rgb(30, 30, 30)
-VS Grey rgb(37, 37, 38)
+VS Grey rgb(190, 190, 190)
 VS Blue rgb(15, 121, 210)
 VS Green rgb(87, 201, 174)
 VS Yellow rgb(221, 220, 164)

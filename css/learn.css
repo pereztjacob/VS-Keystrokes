@@ -4,7 +4,7 @@ body {
     background-image: url("../img/vscode_bg_img.png");
     background-position: center top;
     background-repeat: no-repeat;
-    color: #fff;
+    color: rgb(203, 203, 206);
 }
 
 section#quiz img {
@@ -34,11 +34,4 @@ p {
     font-size: 1.2em;
     line-height: 1.6em;
     margin: auto 150px;
-}
-div#form {
-    text-align: center;
-}
-
-.container{
-    
 }
