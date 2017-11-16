@@ -9,7 +9,7 @@ let score = 0;
 let scoresArray = [];
 
 // timer function in seconds(a)
-let a = 3;
+let a = 20;
 const i = setInterval(timer, 1000); //eslint-disable-line
 function timer() {
     if(a < 1){
@@ -106,7 +106,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             // track what question you're on
             globalI++;
             // resets timer
-            a = 3;
+            a = 20;
             // track score
             score++;
             objArray[globalI].score++;
@@ -125,7 +125,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
                 ele.removeChild(ele.lastChild);
             }
             globalI++;
-            a = 3;
+            a = 20;
             score++;
             if(globalI < 10){
                 render();
@@ -140,7 +140,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
                 ele.removeChild(ele.lastChild);
             }
             globalI++;
-            a = 3;
+            a = 20;
             score++;
             if(globalI < 10){
                 render();

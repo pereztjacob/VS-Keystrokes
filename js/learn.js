@@ -49,6 +49,8 @@ form.addEventListener('submit', function(e){
     objArray.push(newShortCut);
 });
 
+// const sect = 
+
 // function to render key and description elements
 ShortCut.prototype.renderCards = function(keys, description){
     const game = document.getElementById('learnGame');
@@ -87,24 +89,23 @@ for(let i = 0; i < 3; i++){
 const map = [];
 onkeydown = onkeyup = function(e){ //eslint-disable-line
     const game = document.getElementById('learnGame');
+    const sectElement = document.getElementById('section');
     const keyElement = game.querySelectorAll('h2');
     const descElement = game.querySelectorAll('h4');
 
     e = e || event;
     map[e.keyCode] = e.type == 'keydown';
 
-    function doThing(){
-        if(objArray[globalI].keys.length === 2){
-            if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]]){
-                keyElement[0].remove();
-                descElement[0].remove();
-                globalI++;
-                renderByLength();
-                return;
-            }
+    if(objArray[globalI].keys.length === 2){
+        if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]]){
+            keyElement[0].remove();
+            descElement[0].remove();
+            console.log(sectElement);
+            globalI++;
+            renderByLength();
+            return;
         }
     }
-    setTimeout(doThing(), 500);
 
     if(objArray[globalI].keys.length === 3){
         if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]] && map[objArray[globalI].keyCode[2]]){
