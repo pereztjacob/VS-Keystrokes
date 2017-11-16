@@ -22,9 +22,9 @@ const commentLine = new ShortCut(['ctrl', '/'], 'Will comment out the current li
 const selectTerm = new ShortCut(['ctrl', 'f2'], 'Highlights and selects all instances of current word', 'img/ctrlF2.gif', [17, 113]);
 const openConsole = new ShortCut(['ctrl', '`'], 'Will open the console. Here you can access terminal, debug console, problems, and output.', 'img/ctrlAccent.gif', [17, 192]);
 const undo = new ShortCut(['ctrl', 'z'], 'Will undo the last change you have made. You can keep hitting it and it will continue to undo changes. Control Y will bring the change back.', 'img/ctrlZ.gif', [17, 90]);
-const test = new ShortCut(['ctrl', 'shift'], 'test', '#', [16, 17]);
 
-const objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, openConsole, undo, test];
+const objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, openConsole, undo];
+
 
 const form = document.getElementById('new-store');
 form.addEventListener('submit', function(e){
@@ -49,15 +49,19 @@ form.addEventListener('submit', function(e){
     objArray.push(newShortCut);
 });
 
+// const sect = 
+
 // function to render key and description elements
 ShortCut.prototype.renderCards = function(keys, description){
-    const game = document.getElementById('game');
+    const game = document.getElementById('learnGame');
+    const sect = document.createElement('section');
+    game.appendChild(sect);
     const ele = document.createElement('h2');
     ele.textContent = keys;
-    game.appendChild(ele);
+    sect.appendChild(ele);
     const eleTwo = document.createElement('h4');
     eleTwo.textContent = description;
-    game.appendChild(eleTwo);
+    sect.appendChild(eleTwo);
 };
 
 function renderByLength(){
@@ -84,7 +88,10 @@ for(let i = 0; i < 3; i++){
 // keyboard event section
 const map = [];
 onkeydown = onkeyup = function(e){ //eslint-disable-line
-    const game = document.getElementById('game');
+    const game = document.getElementById('learnGame');
+    console.log(game);
+    const sectElement = game.querySelectorAll('section');
+    console.log(sectElement);
     const keyElement = game.querySelectorAll('h2');
     const descElement = game.querySelectorAll('h4');
 
@@ -95,15 +102,19 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
         if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]]){
             keyElement[0].remove();
             descElement[0].remove();
+            sectElement[0].remove();
+            console.log(sectElement);
             globalI++;
             renderByLength();
             return;
         }
     }
+
     if(objArray[globalI].keys.length === 3){
         if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]] && map[objArray[globalI].keyCode[2]]){
             keyElement[0].remove();
             descElement[0].remove();
+            sectElement[0].remove();
             globalI++;
             renderByLength();
             return;
@@ -113,6 +124,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
         if(map[objArray[globalI].keyCode[0]]){
             keyElement[0].remove();
             descElement[0].remove();
+            sectElement[0].remove();
             globalI++;
             renderByLength();
             return;
@@ -126,7 +138,7 @@ restart.addEventListener('click', clickHandler);
 
 function clickHandler(e){ //eslint-disable-line
     // creates arrays of key and description elements on the page
-    const game = document.getElementById('game');
+    const game = document.getElementById('learnGame');
 
     // removes all elements rendered to 'game'
     while(game.hasChildNodes()){
