@@ -1,13 +1,34 @@
 body {
+<<<<<<< HEAD
+=======
+    /* width: 100%; */
+    /* background-color: rgb(37, 37, 38); */
+>>>>>>> 1aca292b8f572542c9376a4f8b3c813099248fdb
     background-image: url("../img/vscode_bg_img.png");
     background-size: cover;
+<<<<<<< HEAD
     color: rgb(230, 224, 70);
+=======
+    color: #fff;
+}
+
+a{
+    font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+.container{
+    /* text-align: center; */
+    /* justify-content: center; */
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    width: 80%;
+>>>>>>> 1aca292b8f572542c9376a4f8b3c813099248fdb
 }
 section#quiz img {
-    width: 600px;
-    margin-top: 40px;
-    border: solid 2px rgb(15, 121, 210);
+    width: 450px;
 }
+<<<<<<< HEAD
 p {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
@@ -45,6 +66,35 @@ nav > ul{
     display: inline;
     font-size: 24px;
     font-style: 'Source Sans Pro', sans-serif;
+=======
+
+p {
+    font-family: 'Share', cursive;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    margin: auto 150px;
+}
+
+#quiz{
+    text-align: center;
+}
+
+nav{
+    margin: 5%;
+    /* margin-top: 5%; */
+}
+nav > ul > li{
+    display: inline;
+    margin: 0 2%;
+}
+nav > ul > li > a{
+    text-decoration: none;
+    color: rgb(203, 133, 73);
+}
+nav > ul{
+    display: inline;
+    font-size: 24px;
+>>>>>>> 1aca292b8f572542c9376a4f8b3c813099248fdb
 }
 nav > a{
     display: inline;
@@ -53,5 +103,8 @@ nav > a{
     color: rgb(15, 121, 210);
     margin-right: 45%;
     margin-left: 8%;
+<<<<<<< HEAD
     font-style: 'Source Sans Pro', sans-serif;
+=======
+>>>>>>> 1aca292b8f572542c9376a4f8b3c813099248fdb
 }
