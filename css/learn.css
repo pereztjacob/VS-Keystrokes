@@ -81,6 +81,12 @@ section > section{
     border-radius: 2px;
     padding: 5px;
 }
+#learnGame > section:first-child{
+    width: 22%;
+}
+#learnGame:first-child{
+    height: 100%;
+}
 h4{
     color: rgb(37, 37, 38);
     font-family: 'Source Sans Pro', sans-serif;
