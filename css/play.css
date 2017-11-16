@@ -14,11 +14,12 @@ section#nav{
 }
 
 ul{
-    display: flex;
-    justify-content: flex-end;
+    /* display: flex;
+    justify-content: flex-end; */
     list-style-type: none;
     /* margin: 30px, 120px, 0px, 0px; */
     padding: 0;
+    float: right;
 }
 
 li{
