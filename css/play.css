@@ -8,6 +8,10 @@ body {
     color: #fff;
 }
 
+a{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
 .container{
     /* text-align: center; */
     /* justify-content: center; */
