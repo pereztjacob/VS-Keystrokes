@@ -75,7 +75,7 @@ nav > a{
 section > section{
     background-color: rgba(124, 124, 124, 0.4);
     z-index: 2;
-    height: 180px;
+    height: 200px;
     /* margin-top: -20px; */
     border: 2px outset rgb(15, 121, 210);
     border-radius: 2px;
@@ -92,14 +92,53 @@ a{
 h3{
     margin-left: 13%;
 }
+h3{
+    animation: shake 1s cubic-bezier(.36,.07,.19,.97) both;
+    animation-iteration-count: infinite;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
 
 
 /* **************************************BUTTON SECTION************************************* */
 
 #buttonSpace{
-    margin-left: 40%;
-    padding-left: .4em;
+    margin-left: 40.75%;
 }
+button#playTheGame > a{
+    text-decoration: none;
+    color: rgb(203, 133, 73);
+}
+button{
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 0.75% 3%;
+    border-radius: 3px;
+    border: 1px solid rgb(37, 37, 38);
+    border-color: rgb(15, 121, 210);
+    font-size: 18px;
+    color: rgb(230, 224, 70);
+    background-color: rgba(87, 201, 174, 0);
+}
+
 
 
 /* **********************************FORM SECTION*************************************** */
