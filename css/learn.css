@@ -65,9 +65,27 @@ nav > a{
     text-align: center;
     width: 20%;
     background-image: url('../img/card.png');
+    /* border: 2px outset rgb(15, 121, 210); */
+    border-radius: 2px;
+    z-index: 1;
+}
+section > section{
+    background-color: rgba(124, 124, 124, 0.4);
+    z-index: 2;
+    height: 180px;
+    /* margin-top: -20px; */
     border: 2px outset rgb(15, 121, 210);
     border-radius: 2px;
 }
+h4{
+    color: rgb(37, 37, 38);
+}
+a{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+/* **************************************BUTTON SECTION************************************* */
 
 #buttonSpace{
     margin-left: 42%;

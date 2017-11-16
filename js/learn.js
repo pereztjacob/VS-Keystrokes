@@ -55,13 +55,15 @@ form.addEventListener('submit', function(e){
 ShortCut.prototype.renderCards = function(keys, description){
     const game = document.getElementById('learnGame');
     const sect = document.createElement('section');
+    const layer = document.createElement('section');
     game.appendChild(sect);
+    sect.appendChild(layer);
     const ele = document.createElement('h2');
     ele.textContent = keys;
-    sect.appendChild(ele);
+    layer.appendChild(ele);
     const eleTwo = document.createElement('h4');
     eleTwo.textContent = description;
-    sect.appendChild(eleTwo);
+    layer.appendChild(eleTwo);
 };
 
 function renderByLength(){
