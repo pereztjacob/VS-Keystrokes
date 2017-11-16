@@ -33,5 +33,27 @@ p {
     text-align: justify;
 }
 
+nav{
+    margin: 5%;
+}
+nav > ul > li{
+    display: inline;
+}
+nav > ul > li > a{
+    text-decoration: none;
+    color: rgb(203, 133, 73);
+}
+nav > ul{
+    display: inline;
+    float: right;
+    font-size: 24px;
+}
+nav > a{
+    display: inline;
+    font-size: 30px;
+    text-decoration: none;
+    color: rgb(15, 121, 210);
+}
+
 
 
