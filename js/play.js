@@ -5,11 +5,11 @@ let globalI = 0;
 let objArray = [];
 
 // global variable to keep track of score
-let score = 0;
-let scoresArray = [];
+// let score = 0;
+// let scoresArray = [];
 
 // timer function in seconds(a)
-let a = 3;
+let a = 20;
 const i = setInterval(timer, 1000); //eslint-disable-line
 function timer() {
     if(a < 1){
@@ -106,9 +106,9 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             // track what question you're on
             globalI++;
             // resets timer
-            a = 3;
+            a = 20;
             // track score
-            score++;
+            // score++;
             objArray[globalI].score++;
             // render new elements
             if(globalI < 10){
@@ -126,7 +126,8 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             }
             globalI++;
             a = 3;
-            score++;
+            // score++;
+
             if(globalI < 10){
                 render();
             }else if(globalI === 10){
@@ -141,7 +142,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             }
             globalI++;
             a = 3;
-            score++;
+            // score++;
             if(globalI < 10){
                 render();
             }else if(globalI === 10){

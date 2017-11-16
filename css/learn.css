@@ -1,9 +1,10 @@
 body {
-    width: 100%;
+    /* width: 100%; */
     background-color: rgb(37, 37, 38);
     background-image: url("../img/vscode_bg_img.png");
     background-position: center top;
     background-repeat: no-repeat;
+    background-size: cover;
     color: rgb(203, 203, 206);
 }
 
@@ -21,7 +22,7 @@ h1 {
 }
 h2 {
     font-family: 'Source Sans Pro', sans-serif;
-    margin-left: 150px;
+    /* margin-left: 150px; */
     color: rgb(203, 133, 73);
 }
 h3 {
@@ -35,3 +36,53 @@ p {
     line-height: 1.6em;
     margin: auto 150px;
 }
+nav{
+    margin: 5%;
+}
+nav > ul > li{
+    display: inline;
+}
+nav > ul > li > a{
+    text-decoration: none;
+    color: rgb(203, 133, 73);
+}
+nav > ul{
+    display: inline;
+    float: right;
+    font-size: 24px;
+}
+nav > a{
+    display: inline;
+    font-size: 30px;
+    text-decoration: none;
+    color: rgb(15, 121, 210);
+}
+#learnGame{
+    display: flex;
+}
+#learnGame > section{
+    margin: 7%;
+    text-align: center;
+    width: 20%;
+    background-image: url('../img/card.png');
+    border: 2px outset rgb(15, 121, 210);
+    border-radius: 2px;
+}
+
+#buttonSpace{
+    margin-left: 42%;
+}
+
+
+/* **********************************FORM SECTION*************************************** */
+
+#inputter{
+    align-content: center;
+}
+#new-store{
+    width: 40%;
+    margin-left: 30%;
+}
+/* form{
+
+} */
