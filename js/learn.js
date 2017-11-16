@@ -89,7 +89,9 @@ for(let i = 0; i < 3; i++){
 const map = [];
 onkeydown = onkeyup = function(e){ //eslint-disable-line
     const game = document.getElementById('learnGame');
-    const sectElement = document.getElementById('section');
+    console.log(game);
+    const sectElement = game.querySelectorAll('section');
+    console.log(sectElement);
     const keyElement = game.querySelectorAll('h2');
     const descElement = game.querySelectorAll('h4');
 
@@ -100,6 +102,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
         if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]]){
             keyElement[0].remove();
             descElement[0].remove();
+            sectElement[0].remove();
             console.log(sectElement);
             globalI++;
             renderByLength();
@@ -111,6 +114,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
         if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]] && map[objArray[globalI].keyCode[2]]){
             keyElement[0].remove();
             descElement[0].remove();
+            sectElement[0].remove();
             globalI++;
             renderByLength();
             return;
@@ -120,6 +124,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
         if(map[objArray[globalI].keyCode[0]]){
             keyElement[0].remove();
             descElement[0].remove();
+            sectElement[0].remove();
             globalI++;
             renderByLength();
             return;
