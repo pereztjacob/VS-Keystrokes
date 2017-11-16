@@ -12,7 +12,7 @@ const selectTerm = new ShortCut(['ctrl', 'f2'], 'Highlights and selects all inst
 const openConsole = new ShortCut(['ctrl', '`'], 'Will open the console. Here you can access terminal, debug console, problems, and output.', 'img/ctrlAccent.gif', [17, 192]);
 const undo = new ShortCut(['ctrl', 'z'], 'Will undo the last change you have made. You can keep hitting it and it will continue to undo changes. Control Y will bring the change back.', 'img/ctrlZ.gif', [17, 90]);
 
-const objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, openConsole, undo];
+const objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, openConsole, undo]; //eslint-disable-line
 
 // constructor for keyboard shortcuts
 function ShortCut(keys, description, gifURL, keyCode){
