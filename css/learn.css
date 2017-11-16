@@ -95,6 +95,14 @@ h4{
 a{
     font-family: 'Source Sans Pro', sans-serif;
 }
+a:link{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+a:hover {
+    color: rgb(230, 224, 70);
+}
+
 h3{
     margin-left: 13%;
 }

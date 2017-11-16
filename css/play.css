@@ -7,6 +7,14 @@ body {
 a{
     font-family: 'Source Sans Pro', sans-serif !important;
 }
+a:link{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+a:hover {
+    color: rgb(230, 224, 70);
+}
+
 p {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;

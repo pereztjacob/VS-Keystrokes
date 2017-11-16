@@ -2,9 +2,9 @@ body {
     /* width: 100%; */
     /*background-color: rgb(37, 37, 38);*/
     background-image: url("../img/vscode_bg_img.png");
-    background-position: center top;
-    background-repeat: no-repeat;
+    /* background-position: center top; */
     background-size: cover;
+    background-repeat: no-repeat;
     color: rgb(203, 203, 206);
 }
 
