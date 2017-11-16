@@ -4,6 +4,7 @@ body {
     background-image: url("../img/vscode_bg_img.png");
     background-position: center top;
     background-repeat: no-repeat;
+    background-size: cover;
     color: rgb(203, 203, 206);
 }
 
@@ -67,3 +68,21 @@ nav > a{
     border: 2px outset rgb(15, 121, 210);
     border-radius: 2px;
 }
+
+#buttonSpace{
+    margin-left: 42%;
+}
+
+
+/* **********************************FORM SECTION*************************************** */
+
+#inputter{
+    align-content: center;
+}
+#new-store{
+    width: 40%;
+    margin-left: 30%;
+}
+/* form{
+
+} */
