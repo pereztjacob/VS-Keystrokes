@@ -50,7 +50,7 @@ if(localStorage.objArray){
     const commentLine = new ShortCut(['ctrl', '/'], 'Comment out the current line of code, or currently selected lines.', 'img/ctrlSlash.gif', [17, 191]);
     const selectTerm = new ShortCut(['ctrl', 'f2'], 'Highlights and selects all instances of current word', 'img/ctrlF2.gif', [17, 113]);
     const openConsole = new ShortCut(['ctrl', '`'], 'Opens the console. Here you can access terminal, debug console, problems, and output.', 'img/ctrlAccent.gif', [17, 192]);
-    const undo = new ShortCut(['ctrl', 'z'], 'Undo the last change you have made. Continue using and this continues to undo changes. Control Y brings the change back.', 'img/ctrlZ.gif', [17, 90]);
+    const undo = new ShortCut(['ctrl', 'z'], 'Undo the last change you have made. Continue using and this continues to undo changes.', 'img/ctrlZ.gif', [17, 90]);
 
     objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, undo, openConsole];
 }
@@ -158,7 +158,7 @@ function drawChart () {
     const context = chartCanvas.getContext('2d');
     Chart.defaults.global.defaultFontColor = '#ffffff'; // eslint-disable-line
     const shortcutScore = [];
-    const shortcutNames = ['CTRL ' + '+ ' + 'X', 'ALT ' + '+ ' + 'Z', 'ALT ' + '+ ' + 'DOWN', 'F8', 'CTRL ' + '+ ' + ']', 'CTRL ' + '+ ' + 'SHIFT ' + '+ ' + '\\', 'CTRL ' + '+ ' + '/', 'CTRL ' + '+ ' + 'F2', 'CTRL ' + '+ ' + '`', 'CTRL ' + '+ ' + 'Z'];
+    const shortcutNames = ['CTRL ' + '+ ' + 'X', 'ALT ' + '+ ' + 'Z', 'ALT ' + '+ ' + 'DOWN', 'F8', 'CTRL ' + '+ ' + ']', 'CTRL ' + '+ ' + 'SHIFT ' + '+ ' + '\\', 'CTRL ' + '+ ' + '/', 'CTRL ' + '+ ' + 'F2', 'CTRL ' + '+ ' + 'Z', 'CTRL ' + '+ ' + '`'];
     console.log(shortcutScore);
     console.log(shortcutNames);
     console.log('Shortcut Score: ' + shortcutScore);
