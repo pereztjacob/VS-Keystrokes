@@ -12,7 +12,6 @@ h1 {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 30px;
     text-align: center;
-    margin-top: 20px;
     color:rgb(15, 121, 210);
 }
 
@@ -38,7 +37,7 @@ a:hover {
 }
 
 nav{
-    margin: 5%;
+    margin: 2%;
     /* margin-top: 5%; */
 }
 nav > ul > li{
