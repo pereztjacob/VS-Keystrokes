@@ -41,7 +41,7 @@ if(localStorage.objArray){
     }
 }else{
     // object instances
-    const cutLine = new ShortCut(['ctrl', 'x'], 'Removes selected line.', 'img', [17, 88]);
+    const cutLine = new ShortCut(['ctrl', 'x'], 'Removes selected line.', 'img/ctrlX.gif', [17, 88]);
     const toggleWrap = new ShortCut(['alt', 'z'], 'Toggles word wrap on and off.', 'img/altZ.gif', [18, 90]);
     const lineMove = new ShortCut(['alt', 'down'], 'Moves current line down. If there is a line directly below current line they swap places.', 'img/altDown.gif', [18, 40]);
     const findError = new ShortCut(['f8'], 'Jumps to the next error in your code', 'img/f8.gif', [119]);
@@ -78,7 +78,6 @@ ShortCut.prototype.renderGifs = function(description, gifURL) {
 
 // functions to render gifs and description elements to quiz play page
 function render(){
-
     if(globalI < 10){
         ShortCut.prototype.renderGifs(objArray[globalI].description, objArray[globalI].gifURL);
     }
