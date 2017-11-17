@@ -102,7 +102,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
                 ele.removeChild(ele.lastChild);
             }
             // track what question you're on
-            objArray[globalI].score++;
+            // objArray[globalI].score++;
             globalI++;
             console.log(globalI);
             // resets timer
@@ -111,7 +111,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             score++;
             // render new elements
             if(globalI < 10){
-                // objArray[globalI].score++;
+                objArray[globalI].score++;
                 render();
             }else if(globalI === objArray.length){
                 drawChart();
