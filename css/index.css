@@ -16,9 +16,9 @@ section#quiz img {
 h1 {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 2.0em;
-    color: rgb(230, 224, 70);
+    color: rgb(203, 133, 73);
     text-align: center;
-    margin-top: 40px;
+    margin-top: 5%;
 }
 
 h2 {
@@ -45,6 +45,13 @@ p {
     letter-spacing: 0.05em;
     line-height: 1.6em;
     margin: auto 150px;
+}
+
+.strokes{
+    color: rgb(203, 133, 73);
+}
+.strokes:hover{
+    color: rgb(230, 224, 70);
 }
 
 form {
