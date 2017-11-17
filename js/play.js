@@ -9,26 +9,25 @@ let score = 0;
 
 
 // timer function in seconds(a)
-let a = 20;
+let a = 3;
 const i = setInterval(timer, 1000); //eslint-disable-line
 function timer() {
     if(a < 1){
-
         // find and remove elements on page
         const ele = document.getElementById('quiz');
         while(ele.hasChildNodes()){
             ele.removeChild(ele.lastChild);
         }
-
         // move to next question
         globalI++;
+        console.log(globalI);
         if(globalI < 10){
             render();
         }else if(globalI === 10){
             drawChart();
         }else{}
         // reset timer
-        a = 20;
+        a = 3;
     }
     a -= 1;
 }
@@ -53,7 +52,7 @@ if(localStorage.objArray){
     const openConsole = new ShortCut(['ctrl', '`'], 'Will open the console. Here you can access terminal, debug console, problems, and output.', 'img/ctrlAccent.gif', [17, 192]);
     const undo = new ShortCut(['ctrl', 'z'], 'Will undo the last change you have made. You can keep hitting it and it will continue to undo changes. Control Y will bring the change back.', 'img/ctrlZ.gif', [17, 90]);
 
-    objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, openConsole, undo];
+    objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, undo, openConsole];
 }
 // constructor for keyboard shortcut elements
 function ShortCut(keys, description, gifURL, keyCode, score){
@@ -104,16 +103,18 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
                 ele.removeChild(ele.lastChild);
             }
             // track what question you're on
+            objArray[globalI].score++;
             globalI++;
+            console.log(globalI);
             // resets timer
-            a = 20;
+            a = 3;
             // track score
             score++;
-            objArray[globalI].score++;
             // render new elements
             if(globalI < 10){
+                // objArray[globalI].score++;
                 render();
-            }else if(globalI === 10){
+            }else if(globalI === objArray.length){
                 drawChart();
             }else{}
         }
@@ -124,8 +125,9 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             while(ele.hasChildNodes()){
                 ele.removeChild(ele.lastChild);
             }
+            objArray[globalI].score++;
             globalI++;
-            a = 20;
+            a = 3;
             score++;
             if(globalI < 10){
                 render();
@@ -139,8 +141,9 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             while(ele.hasChildNodes()){
                 ele.removeChild(ele.lastChild);
             }
+            objArray[globalI].score++;
             globalI++;
-            a = 20;
+            a = 3;
             score++;
             if(globalI < 10){
                 render();
@@ -156,7 +159,7 @@ function drawChart () {
     const context = chartCanvas.getContext('2d');
     Chart.defaults.global.defaultFontColor = '#ffffff'; // eslint-disable-line
     const shortcutScore = [];
-    const shortcutNames = ['CTRL ' + '+ ' + 'X', 'ALT ' + '+ ' + 'Z', 'ALT ' + '+ ' + 'DOWN', 'F8', 'CTRL ' + '+ ' + ']', 'CTRL ' + '+ ' + 'SHIFT ' + '+ ' + '\\', 'CTRL ' + '+ ' + '/', 'CTRL ' + '+ ' + 'F2', 'CTRL ' + '+ ' + '`', 'CTRL ' + '+ ' + '`', 'CTRL ' + '+ ' + 'Z'];
+    const shortcutNames = ['CTRL ' + '+ ' + 'X', 'ALT ' + '+ ' + 'Z', 'ALT ' + '+ ' + 'DOWN', 'F8', 'CTRL ' + '+ ' + ']', 'CTRL ' + '+ ' + 'SHIFT ' + '+ ' + '\\', 'CTRL ' + '+ ' + '/', 'CTRL ' + '+ ' + 'F2', 'CTRL ' + '+ ' + '`', 'CTRL ' + '+ ' + 'Z'];
     console.log(shortcutScore);
     console.log(shortcutNames);
     // const clickedData = [];
@@ -182,12 +185,12 @@ function drawChart () {
                         backgroundColor: 'red',
                         defaultFontFamily: 'Arial',
                     },
-                    // {
-                    //     label: 'Shown Data',
-                    //     data: shownData,
-                    //     backgroundColor: 'blue',
-                    //     defaultFontFamily: 'Arial',
-                    // }
+                    {
+                        // label: 'Shown Data',
+                        // data: shownData,
+                        // backgroundColor: 'blue',
+                        // defaultFontFamily: 'Arial',
+                    }
                 ]
             },
             options: {
