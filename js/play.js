@@ -9,7 +9,7 @@ let score = 0;
 
 
 // timer function in seconds(a)
-let a = 3;
+let a = 20;
 const i = setInterval(timer, 1000); //eslint-disable-line
 function timer() {
     if(a < 1){
@@ -27,7 +27,7 @@ function timer() {
             drawChart();
         }else{}
         // reset timer
-        a = 3;
+        a = 20;
     }
     a -= 1;
 }
@@ -41,7 +41,7 @@ if(localStorage.objArray){
     }
 }else{
     // object instances
-    const cutLine = new ShortCut(['ctrl', 'x'], 'Removes selected line.', 'img', [17, 88]);
+    const cutLine = new ShortCut(['ctrl', 'x'], 'Removes selected line.', 'img/ctrlX.gif', [17, 88]);
     const toggleWrap = new ShortCut(['alt', 'z'], 'Toggles word wrap on and off.', 'img/altZ.gif', [18, 90]);
     const lineMove = new ShortCut(['alt', 'down'], 'Moves current line down. If there is a line directly below current line they swap places.', 'img/altDown.gif', [18, 40]);
     const findError = new ShortCut(['f8'], 'Jumps to the next error in your code', 'img/f8.gif', [119]);
@@ -107,7 +107,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             globalI++;
             console.log(globalI);
             // resets timer
-            a = 3;
+            a = 20;
             // track score
             score++;
             // render new elements
@@ -127,7 +127,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             }
             objArray[globalI].score++;
             globalI++;
-            a = 3;
+            a = 20;
             score++;
             if(globalI < 10){
                 render();
@@ -143,7 +143,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             }
             objArray[globalI].score++;
             globalI++;
-            a = 3;
+            a = 20;
             score++;
             if(globalI < 10){
                 render();
