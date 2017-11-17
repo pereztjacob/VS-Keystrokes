@@ -9,7 +9,7 @@ let score = 0;
 
 
 // timer function in seconds(a)
-let a = 20;
+let a = 3;
 const i = setInterval(timer, 1000); //eslint-disable-line
 function timer() {
     if(a < 1){
@@ -28,7 +28,7 @@ function timer() {
             drawChart();
         }else{}
         // reset timer
-        a = 20;
+        a = 3;
     }
     a -= 1;
 }
@@ -106,7 +106,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             // track what question you're on
             globalI++;
             // resets timer
-            a = 20;
+            a = 3;
             // track score
             score++;
             objArray[globalI].score++;
@@ -125,7 +125,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
                 ele.removeChild(ele.lastChild);
             }
             globalI++;
-            a = 20;
+            a = 3;
             score++;
             if(globalI < 10){
                 render();
@@ -140,7 +140,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
                 ele.removeChild(ele.lastChild);
             }
             globalI++;
-            a = 20;
+            a = 3;
             score++;
             if(globalI < 10){
                 render();
@@ -157,16 +157,10 @@ function drawChart () {
     Chart.defaults.global.defaultFontColor = '#ffffff'; // eslint-disable-line
     const shortcutScore = [];
     const shortcutNames = ['CTRL ' + '+ ' + 'X', 'ALT ' + '+ ' + 'Z', 'ALT ' + '+ ' + 'DOWN', 'F8', 'CTRL ' + '+ ' + ']', 'CTRL ' + '+ ' + 'SHIFT ' + '+ ' + '\\', 'CTRL ' + '+ ' + '/', 'CTRL ' + '+ ' + 'F2', 'CTRL ' + '+ ' + '`', 'CTRL ' + '+ ' + '`', 'CTRL ' + '+ ' + 'Z'];
-    console.log(shortcutScore);
     console.log(shortcutNames);
-    // const clickedData = [];
-    // const shownData = [];
     console.log('Shortcut Score: ' + shortcutScore);
-    // console.log('Clicked data: ' + clickedData);
     for ( let i = 0; i < objArray.length; i++ ){
         shortcutScore.push(objArray[i].score);
-        // shortcutNames.push(objArray[i].keys);
-        // shownData.push(itemList[i].shown);
     }
 
     const chart = new Chart ( // eslint-disable-line
@@ -182,12 +176,6 @@ function drawChart () {
                         backgroundColor: 'red',
                         defaultFontFamily: 'Arial',
                     },
-                    // {
-                    //     label: 'Shown Data',
-                    //     data: shownData,
-                    //     backgroundColor: 'blue',
-                    //     defaultFontFamily: 'Arial',
-                    // }
                 ]
             },
             options: {
