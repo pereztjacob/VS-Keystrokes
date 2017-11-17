@@ -25,9 +25,6 @@ p {
 }
 nav{
     margin: 2%;
-    /* margin-left: 5%;
-    margin-top: 5%;
-    margin-bottom: 3%; */
 }
 nav > ul > li{
     display: inline;
