@@ -13,7 +13,6 @@ h1 {
     font-size: 2.0em;
     color: rgb(230, 224, 70);
     text-align: center;
-    margin-top: 40px;
 }
 
 h3 {
@@ -39,7 +38,7 @@ a:hover {
 
 nav{
     margin: 2%;
-    /* margin-top: 5%; */
+    margin-bottom: 40px;
 }
 nav > ul > li{
     display: inline;
