@@ -157,16 +157,10 @@ function drawChart () {
     Chart.defaults.global.defaultFontColor = '#ffffff'; // eslint-disable-line
     const shortcutScore = [];
     const shortcutNames = ['CTRL ' + '+ ' + 'X', 'ALT ' + '+ ' + 'Z', 'ALT ' + '+ ' + 'DOWN', 'F8', 'CTRL ' + '+ ' + ']', 'CTRL ' + '+ ' + 'SHIFT ' + '+ ' + '\\', 'CTRL ' + '+ ' + '/', 'CTRL ' + '+ ' + 'F2', 'CTRL ' + '+ ' + '`', 'CTRL ' + '+ ' + '`', 'CTRL ' + '+ ' + 'Z'];
-    console.log(shortcutScore);
     console.log(shortcutNames);
-    // const clickedData = [];
-    // const shownData = [];
     console.log('Shortcut Score: ' + shortcutScore);
-    // console.log('Clicked data: ' + clickedData);
     for ( let i = 0; i < objArray.length; i++ ){
         shortcutScore.push(objArray[i].score);
-        // shortcutNames.push(objArray[i].keys);
-        // shownData.push(itemList[i].shown);
     }
 
     const chart = new Chart ( // eslint-disable-line
@@ -182,12 +176,6 @@ function drawChart () {
                         backgroundColor: 'red',
                         defaultFontFamily: 'Arial',
                     },
-                    // {
-                    //     label: 'Shown Data',
-                    //     data: shownData,
-                    //     backgroundColor: 'blue',
-                    //     defaultFontFamily: 'Arial',
-                    // }
                 ]
             },
             options: {
