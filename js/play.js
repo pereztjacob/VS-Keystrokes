@@ -78,7 +78,6 @@ ShortCut.prototype.renderGifs = function(description, gifURL) {
 
 // functions to render gifs and description elements to quiz play page
 function render(){
-
     if(globalI < 10){
         ShortCut.prototype.renderGifs(objArray[globalI].description, objArray[globalI].gifURL);
     }

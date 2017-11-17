@@ -54,7 +54,12 @@ nav > a{
     margin-right: 10%;
     margin-left: 10%;
 }
-
+.strokes{
+    color: rgb(203, 133, 73);
+}
+.strokes:hover{
+    color: rgb(230, 224, 70);
+}
 img {
     width: 475px;
     height: auto;

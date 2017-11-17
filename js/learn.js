@@ -34,24 +34,72 @@ if(localStorage.objArray){
     objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, openConsole, undo];
 }
 
+function nextQuestion(){
+    const game = document.getElementById('learnGame');
+    const sectElement = game.querySelectorAll('section');
+    const keyElement = game.querySelectorAll('h2');
+    const descElement = game.querySelectorAll('h4');
+    const shakyText = document.getElementById('directions');
+
+    keyElement[0].remove();
+    descElement[0].remove();
+    sectElement[0].remove();
+    if(globalI === objArray.length - 1){
+        shakyText.remove();
+    }
+    globalI++;
+    renderByLength();
+    return;
+}
+
+let keysa = [];
 const form = document.getElementById('new-store');
 form.addEventListener('submit', function(e){
     e.preventDefault();
 
     const keys = document.getElementById('keys').value;
     console.log(keys.charCodeAt(0));
+    console.log(keys);
     const description = document.getElementById('description').value;
-    const keyCodeValueOne = keys.toUpperCase().charCodeAt(0);
-    const keyCodeValueTwo = keys.toUpperCase().charCodeAt(1);
-    const keyCodeValueThree = keys.toUpperCase().charCodeAt(2);
-    const keyCodeValueFour = keys.toUpperCase().charCodeAt(3);
+    console.log(keys);
     const keyCode = [];
-    keyCode.push(keyCodeValueOne);
-    keyCode.push(keyCodeValueTwo);
-    keyCode.push(keyCodeValueThree);
-    keyCode.push(keyCodeValueFour);
+    keysa = keyCode;
 
-    const newShortCut = new ShortCut(keys, description, '#', keyCode);
+    for(let i = 0; i < keys.length; i++){
+        if(keys.charAt(i) === 'c' && keys.charAt(i + 1) === 't'){
+            const keyCodeValueOne = 17;
+            const keyCodeValueTwo = keys.toUpperCase().charCodeAt(i + 4);
+            const keyCodeValueThree = keys.toUpperCase().charCodeAt(i);
+            const keyCodeValueFour = keys.toUpperCase().charCodeAt(6);
+            keyCode.push(keyCodeValueOne);
+            keyCode.push(keyCodeValueTwo);
+            keyCode.push(keyCodeValueThree);
+            keyCode.push(keyCodeValueFour);
+        }
+    }
+
+    if(keys.charAt(0) === 'c' && keys.charAt(1) === 't'){
+        const keyCodeValueOne = 17;
+        const keyCodeValueTwo = keys.toUpperCase().charCodeAt(4);
+        const keyCodeValueThree = keys.toUpperCase().charCodeAt(5);
+        const keyCodeValueFour = keys.toUpperCase().charCodeAt(6);
+        keyCode.push(keyCodeValueOne);
+        keyCode.push(keyCodeValueTwo);
+        keyCode.push(keyCodeValueThree);
+        keyCode.push(keyCodeValueFour);
+    }else{
+        const keyCodeValueOne = keys.toUpperCase().charCodeAt(0);
+        const keyCodeValueTwo = keys.toUpperCase().charCodeAt(1);
+        const keyCodeValueThree = keys.toUpperCase().charCodeAt(2);
+        const keyCodeValueFour = keys.toUpperCase().charCodeAt(3);
+        keyCode.push(keyCodeValueOne);
+        keyCode.push(keyCodeValueTwo);
+        keyCode.push(keyCodeValueThree);
+        keyCode.push(keyCodeValueFour);
+    }
+
+
+    const newShortCut = new ShortCut(keys, description, '#', keysa);
 
     console.log(newShortCut);
     objArray.push(newShortCut);
@@ -80,8 +128,10 @@ function renderByLength(){
         ShortCut.prototype.renderCards(objArray[globalI + 2].keys[0] + ' + ' + objArray[globalI + 2].keys[1], objArray[globalI + 2].description);
     }else if(objArray[globalI + 2].keys.length === 3){
         ShortCut.prototype.renderCards(objArray[globalI + 2].keys[0] + ' + ' + objArray[globalI + 2].keys[1] + ' + ' + objArray[globalI + 2].keys[2], objArray[globalI + 2].description);
-    }else{
+    }else if(objArray[globalI + 2].keys.length === 1){
         ShortCut.prototype.renderCards(objArray[globalI + 2].keys[0], objArray[globalI + 2].description);
+    }else{
+        ShortCut.prototype.renderCards(objArray[globalI + 2].keys[0] + ' + ' + objArray[globalI + 2].keys[1] + ' + ' + objArray[globalI + 2].keys[2] + ' + ' + objArray[globalI + 2].keys[3], objArray[globalI + 2].description);
     }
 }
 
@@ -91,54 +141,39 @@ for(let i = 0; i < 3; i++){
         ShortCut.prototype.renderCards(objArray[i].keys[0] + ' + ' + objArray[i].keys[1], objArray[i].description);
     }else if(objArray[i].keys.length === 3){
         ShortCut.prototype.renderCards(objArray[i].keys[0] + ' + ' + objArray[i].keys[1] + ' + ' + objArray[i].keys[2], objArray[i].description);
-    }else{
+    }else if(objArray[i].keys.length === 1){
         ShortCut.prototype.renderCards(objArray[i].keys[0], objArray[i].description);
+    }else{
+        ShortCut.prototype.renderCards(objArray[i].keys[0] + ' + ' + objArray[i].keys[1] + ' + ' + objArray[i].keys[2] + ' + ' + objArray[i].keys[3], objArray[i].description);
     }
 }
 
 // keyboard event section
 const map = [];
 onkeydown = onkeyup = function(e){ //eslint-disable-line
-    const game = document.getElementById('learnGame');
-    console.log(game);
-    const sectElement = game.querySelectorAll('section');
-    console.log(sectElement);
-    const keyElement = game.querySelectorAll('h2');
-    const descElement = game.querySelectorAll('h4');
 
     e = e || event;
     map[e.keyCode] = e.type == 'keydown';
 
     if(objArray[globalI].keys.length === 2){
         if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]]){
-            keyElement[0].remove();
-            descElement[0].remove();
-            sectElement[0].remove();
-            console.log(sectElement);
-            globalI++;
-            renderByLength();
-            return;
+            nextQuestion();
         }
     }
 
     if(objArray[globalI].keys.length === 3){
         if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]] && map[objArray[globalI].keyCode[2]]){
-            keyElement[0].remove();
-            descElement[0].remove();
-            sectElement[0].remove();
-            globalI++;
-            renderByLength();
-            return;
+            nextQuestion();
         }
     }
     if(objArray[globalI].keys.length === 1){
         if(map[objArray[globalI].keyCode[0]]){
-            keyElement[0].remove();
-            descElement[0].remove();
-            sectElement[0].remove();
-            globalI++;
-            renderByLength();
-            return;
+            nextQuestion();
+        }
+    }
+    if(objArray[globalI].keys.length === 4){
+        if(map[objArray[globalI].keyCode[0]] && map[objArray[globalI].keyCode[1]] && map[objArray[globalI].keyCode[2]] && map[objArray[globalI].keyCode[3]]){
+            nextQuestion();
         }
     }
 };
