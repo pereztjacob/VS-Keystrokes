@@ -25,8 +25,8 @@ Showcase of Team Members (what more would you like to say?)
 
 ## Individual Technical Reflections
 (Share something technical you worked on: a challenge, a revelation, some code you're super proud of)
-Liz:
-Zach:
+Liz: Super proud of the design that utilizes a styling similar to the actual VS Code. Challenge is to create a single CSS document from the four we currently have.
+Jacob:
 Richard:
 Zach:
 
