@@ -9,7 +9,7 @@ let score = 0;
 
 
 // timer function in seconds(a)
-let a = 3;
+let a = 20;
 const i = setInterval(timer, 1000); //eslint-disable-line
 function timer() {
     if(a < 1){
@@ -27,7 +27,7 @@ function timer() {
             drawChart();
         }else{}
         // reset timer
-        a = 3;
+        a = 20;
     }
     a -= 1;
 }
@@ -107,7 +107,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             globalI++;
             console.log(globalI);
             // resets timer
-            a = 3;
+            a = 20;
             // track score
             score++;
             // render new elements
@@ -127,7 +127,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             }
             objArray[globalI].score++;
             globalI++;
-            a = 3;
+            a = 20;
             score++;
             if(globalI < 10){
                 render();
@@ -143,7 +143,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             }
             objArray[globalI].score++;
             globalI++;
-            a = 3;
+            a = 20;
             score++;
             if(globalI < 10){
                 render();

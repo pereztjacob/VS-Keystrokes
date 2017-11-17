@@ -24,9 +24,10 @@ p {
     text-align: center;
 }
 nav{
-    margin-left: 5%;
+    margin: 2%;
+    /* margin-left: 5%;
     margin-top: 5%;
-    margin-bottom: 3%;
+    margin-bottom: 3%; */
 }
 nav > ul > li{
     display: inline;
@@ -52,4 +53,9 @@ nav > a{
 #container{
     margin-right: 10%;
     margin-left: 10%;
+}
+
+img {
+    width: 475px;
+    height: auto;
 }
