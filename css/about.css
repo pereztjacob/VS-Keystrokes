@@ -85,4 +85,9 @@ div.team{
     height: 25%;
     margin: 20px;
 }
-
+.strokes{
+    color: rgb(203, 133, 73);
+}
+.strokes:hover{
+    color: rgb(230, 224, 70);
+}
