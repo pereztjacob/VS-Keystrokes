@@ -21,9 +21,9 @@ function timer() {
         // move to next question
         globalI++;
         console.log(globalI);
-        if(globalI < 10){
+        if(globalI < 11){
             render();
-        }else if(globalI === 10){
+        }else if(globalI === 11){
             drawChart();
         }else{}
         // reset timer
@@ -51,8 +51,9 @@ if(localStorage.objArray){
     const selectTerm = new ShortCut(['ctrl', 'f2'], 'Highlights and selects all instances of current word', 'img/ctrlF2.gif', [17, 113]);
     const openConsole = new ShortCut(['ctrl', '`'], 'Opens the console. Here you can access terminal, debug console, problems, and output.', 'img/ctrlAccent.gif', [17, 192]);
     const undo = new ShortCut(['ctrl', 'z'], 'Undo the last change you have made. Continue using and this continues to undo changes.', 'img/ctrlZ.gif', [17, 90]);
+    const test = new ShortCut (['a'], 'You finished! Press \'a\' to display your chart!', '#', [65]);
 
-    objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, undo, openConsole];
+    objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, undo, openConsole, test];
 }
 // constructor for keyboard shortcut elements
 function ShortCut(keys, description, gifURL, keyCode, score){
@@ -78,7 +79,7 @@ ShortCut.prototype.renderGifs = function(description, gifURL) {
 
 // functions to render gifs and description elements to quiz play page
 function render(){
-    if(globalI < 10){
+    if(globalI < 11){
         ShortCut.prototype.renderGifs(objArray[globalI].description, objArray[globalI].gifURL);
     }
     localStorage.setItem('objArray', JSON.stringify(objArray));
@@ -110,8 +111,7 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             // track score
             score++;
             // render new elements
-            if(globalI < 10){
-                // objArray[globalI].score++;
+            if(globalI < 11){
                 render();
             }else if(globalI === objArray.length){
                 drawChart();
@@ -128,9 +128,9 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             globalI++;
             a = 20;
             score++;
-            if(globalI < 10){
+            if(globalI < 11){
                 render();
-            }else if(globalI === 10){
+            }else if(globalI === 11){
                 drawChart();
             }else{}
         }
@@ -144,9 +144,9 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             globalI++;
             a = 20;
             score++;
-            if(globalI < 10){
+            if(globalI < 11){
                 render();
-            }else if(globalI === 10){
+            }else if(globalI === 11){
                 drawChart();
             }else{}
         }
@@ -188,7 +188,7 @@ function drawChart () {
                 borderWidth: 10,
                 title: {
                     display: true,
-                    text: 'You got ' + score + ' answer/s correct.',
+                    text: 'You got ' + (score - 1) + ' answer/s correct.',
                     fontSize: 25,
                     defaultFontFamily: 'Arial',
                     fontStyle: 'bold',
