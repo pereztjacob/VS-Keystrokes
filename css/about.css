@@ -1,0 +1,92 @@
+body {
+    /* width: 100%; */
+    /*background-color: rgb(37, 37, 38);*/
+    background-image: url("../img/vscode_bg_img.png");
+    /* background-position: center top; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: rgb(203, 203, 206);
+}
+
+h1 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 2.0em;
+    color: rgb(15, 121, 210);
+    text-align: center;
+}
+
+h3 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    color: rgb(87, 201, 174);
+}
+
+p {
+    font-family: 'Share', cursive;
+    font-size: 16px;
+    line-height: 1.8em;
+    text-align: justify;
+}
+
+a:link{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+a:hover {
+    color: rgb(230, 224, 70);
+}
+
+nav{
+    margin: 2%;
+    margin-bottom: 40px;
+}
+nav > ul > li{
+    display: inline;
+    margin: 0 2%;
+}
+nav > ul > li > a{
+    text-decoration: none;
+    color: rgb(203, 133, 73);
+}
+nav > ul{
+    display: inline;
+    font-size: 24px;
+}
+
+nav > a {
+    display: inline;
+    font-size: 30px;
+    text-decoration: none;
+    color: rgb(15, 121, 210);
+    margin-right: 45%;
+    margin-left: 8%;
+}
+
+div.photo {
+    text-align: center;    
+}
+
+img#team {
+    width: 50%;
+    height: 50%;
+    border: 2px solid rgb(15, 121, 210);
+}
+
+div.team{
+    text-align: center; 
+}
+
+
+.floating-box {
+    vertical-align: text-top;
+    display: inline-block;
+    width: 20%;
+    height: 25%;
+    margin: 20px;
+}
+.strokes{
+    color: rgb(203, 133, 73);
+}
+.strokes:hover{
+    color: rgb(230, 224, 70);
+}

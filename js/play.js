@@ -6,29 +6,28 @@ let objArray = [];
 
 // global variable to keep track of score
 let score = 0;
-let scoresArray = [];
+
 
 // timer function in seconds(a)
 let a = 20;
 const i = setInterval(timer, 1000); //eslint-disable-line
 function timer() {
     if(a < 1){
-
         // find and remove elements on page
         const ele = document.getElementById('quiz');
         while(ele.hasChildNodes()){
             ele.removeChild(ele.lastChild);
         }
-
         // move to next question
         globalI++;
-        if(globalI < 10){
+        console.log(globalI);
+        if(globalI < 11){
             render();
-        }else if(globalI === 10){
+        }else if(globalI === 11){
             drawChart();
         }else{}
         // reset timer
-        a = 3;
+        a = 20;
     }
     a -= 1;
 }
@@ -42,18 +41,19 @@ if(localStorage.objArray){
     }
 }else{
     // object instances
-    const cutLine = new ShortCut(['CTRL ' + '+ ' + 'X'], 'Removes selected line.', 'img/ctrlX.gif', [17, 88]);
-    const toggleWrap = new ShortCut(['ALT ' + '+ ' + 'Z'], 'Will toggle word wrap on and off.', 'img/altZ.gif', [18, 90]);
-    const lineMove = new ShortCut(['ALT ' + '+ ' + 'DOWN'], 'Moves current line down. If there is a line directly below current line they swap places. You can use the up arrow and it wil do the opposite.', 'img/altDown.gif', [18, 40]);
-    const findError = new ShortCut(['F8'], 'Will jump to the next error in your code', 'img/f8.gif',[119]);
-    const indent = new ShortCut(['CTRL ' + '+ ' + ']'], 'Indents selected text one tab to the left. [ will remove and indent.', 'img/ctrlBracket.gif', [17, 221]);
-    const matchingOpenClose = new ShortCut(['CTRL ' + '+ ' + 'SHIFT ' + '+ ' + '\\'], 'Will find the matching bracket, parentheses, or curly brace.', 'img/ctrlShiftBSlash.gif', [17, 16, 220]);
-    const commentLine = new ShortCut(['CTRL ' + '+ ' + '/'], 'Will comment out the current line of code, or currently selected lines.', 'img/ctrlSlash.gif', [17, 191]);
-    const selectTerm = new ShortCut(['CTRL ' + '+ ' + 'F2'], 'Highlights and selects all instances of current word', 'img/ctrlF2.gif', [17, 113]);
-    const openConsole = new ShortCut(['CTRL ' + '+ ' + '`'], 'Will open the console. Here you can access terminal, debug console, problems, and output.', 'img/ctrlAccent.gif', [17, 192]);
-    const undo = new ShortCut(['CTRL ' + '+ ' + 'Z'], 'Will undo the last change you have made. You can keep hitting it and it will continue to undo changes. Control Y will bring the change back.', 'img/ctrlZ.gif', [17, 90]);
+    const cutLine = new ShortCut(['ctrl', 'x'], 'Removes selected line.', 'img/ctrlX.gif', [17, 88]);
+    const toggleWrap = new ShortCut(['alt', 'z'], 'Toggles word wrap on and off.', 'img/altZ.gif', [18, 90]);
+    const lineMove = new ShortCut(['alt', 'down'], 'Moves current line down. If there is a line directly below current line they swap places.', 'img/altDown.gif', [18, 40]);
+    const findError = new ShortCut(['f8'], 'Jumps to the next error in your code', 'img/f8.gif', [119]);
+    const indent = new ShortCut(['ctrl', ']'], 'Indents selected text one tab to the left.', 'img/ctrlBracket.gif', [17, 221]);
+    const matchingOpenClose = new ShortCut(['ctrl', 'shift', '\\'], 'Finds the matching bracket, parentheses, or curly brace.', 'img/ctrlShiftBSlash.gif', [17, 16, 220]);
+    const commentLine = new ShortCut(['ctrl', '/'], 'Comment out the current line of code, or currently selected lines.', 'img/ctrlSlash.gif', [17, 191]);
+    const selectTerm = new ShortCut(['ctrl', 'f2'], 'Highlights and selects all instances of current word', 'img/ctrlF2.gif', [17, 113]);
+    const openConsole = new ShortCut(['ctrl', '`'], 'Opens the console. Here you can access terminal, debug console, problems, and output.', 'img/ctrlAccent.gif', [17, 192]);
+    const undo = new ShortCut(['ctrl', 'z'], 'Undo the last change you have made. Continue using and this continues to undo changes.', 'img/ctrlZ.gif', [17, 90]);
+    const test = new ShortCut (['a'], 'You finished! Press \'a\' to display your chart!', '#', [65]);
 
-    objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, openConsole, undo];
+    objArray = [cutLine, toggleWrap, lineMove, findError, indent, matchingOpenClose, commentLine, selectTerm, undo, openConsole, test];
 }
 // constructor for keyboard shortcut elements
 function ShortCut(keys, description, gifURL, keyCode, score){
@@ -79,8 +79,7 @@ ShortCut.prototype.renderGifs = function(description, gifURL) {
 
 // functions to render gifs and description elements to quiz play page
 function render(){
-
-    if(globalI < 10){
+    if(globalI < 11){
         ShortCut.prototype.renderGifs(objArray[globalI].description, objArray[globalI].gifURL);
     }
     localStorage.setItem('objArray', JSON.stringify(objArray));
@@ -104,16 +103,17 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
                 ele.removeChild(ele.lastChild);
             }
             // track what question you're on
+            objArray[globalI].score++;
             globalI++;
+            console.log(globalI);
             // resets timer
             a = 20;
             // track score
             score++;
-            objArray[globalI].score++;
             // render new elements
-            if(globalI < 10){
+            if(globalI < 11){
                 render();
-            }else if(globalI === 10){
+            }else if(globalI === objArray.length){
                 drawChart();
             }else{}
         }
@@ -124,12 +124,13 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             while(ele.hasChildNodes()){
                 ele.removeChild(ele.lastChild);
             }
+            objArray[globalI].score++;
             globalI++;
             a = 20;
             score++;
-            if(globalI < 10){
+            if(globalI < 11){
                 render();
-            }else if(globalI === 10){
+            }else if(globalI === 11){
                 drawChart();
             }else{}
         }
@@ -139,12 +140,13 @@ onkeydown = onkeyup = function(e){ //eslint-disable-line
             while(ele.hasChildNodes()){
                 ele.removeChild(ele.lastChild);
             }
+            objArray[globalI].score++;
             globalI++;
             a = 20;
             score++;
-            if(globalI < 10){
+            if(globalI < 11){
                 render();
-            }else if(globalI === 10){
+            }else if(globalI === 11){
                 drawChart();
             }else{}
         }
@@ -156,15 +158,12 @@ function drawChart () {
     const context = chartCanvas.getContext('2d');
     Chart.defaults.global.defaultFontColor = '#ffffff'; // eslint-disable-line
     const shortcutScore = [];
-    const shortcutNames = [];
-    // const clickedData = [];
-    // const shownData = [];
+    const shortcutNames = ['CTRL ' + '+ ' + 'X', 'ALT ' + '+ ' + 'Z', 'ALT ' + '+ ' + 'DOWN', 'F8', 'CTRL ' + '+ ' + ']', 'CTRL ' + '+ ' + 'SHIFT ' + '+ ' + '\\', 'CTRL ' + '+ ' + '/', 'CTRL ' + '+ ' + 'F2', 'CTRL ' + '+ ' + 'Z', 'CTRL ' + '+ ' + '`'];
+    console.log(shortcutScore);
+    console.log(shortcutNames);
     console.log('Shortcut Score: ' + shortcutScore);
-    // console.log('Clicked data: ' + clickedData);
     for ( let i = 0; i < objArray.length; i++ ){
         shortcutScore.push(objArray[i].score);
-        shortcutNames.push(objArray[i].keys);
-        // shownData.push(itemList[i].shown);
     }
 
     const chart = new Chart ( // eslint-disable-line
@@ -180,12 +179,6 @@ function drawChart () {
                         backgroundColor: 'red',
                         defaultFontFamily: 'Arial',
                     },
-                    // {
-                    //     label: 'Shown Data',
-                    //     data: shownData,
-                    //     backgroundColor: 'blue',
-                    //     defaultFontFamily: 'Arial',
-                    // }
                 ]
             },
             options: {
@@ -195,7 +188,7 @@ function drawChart () {
                 borderWidth: 10,
                 title: {
                     display: true,
-                    text: 'Shortcut Data',
+                    text: 'You got ' + (score - 1) + ' answer/s correct.',
                     fontSize: 25,
                     defaultFontFamily: 'Arial',
                     fontStyle: 'bold',
